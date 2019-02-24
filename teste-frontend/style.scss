@@ -1,0 +1,273 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #463995;
+}
+
+.content{
+    margin:9% auto;
+    width: 310px;
+}
+
+#logo-header{
+    background: url("https://i.ibb.co/hyhkWHg/logo-matchbox.png");
+    height: 44px;
+    width: 170px;
+}
+#list{
+  margin-top: 0px;
+}
+
+#list-header{
+  font-family: 'Montserrat extra-bold', sans-serif;
+  width: 310px;
+  height: 44px;
+  background: #fff;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+  border-radius:3px;
+  letter-spacing: -3px;
+  }
+
+#container {
+  width: 520px;
+  height: 462px;
+  background: transparent;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 3px;
+  margin-top: 55px;
+
+  &.details {
+    .ranking-list {
+      background: transparent;
+      transition: background 0.5s;
+      pointer-events: none;
+      li {
+        transition: transform 0.3s, opacity 0.2s;
+
+        &:not(.active) {
+          opacity: 0;
+        }
+        &.active {
+          transform: translate3d(0, 140px, 0);  
+          border-color: rgba(255,255,255,0);
+          transition: transform 0.3s, opacity 0.2s, border-color 0.2s;
+
+          &:hover {
+            background: none;
+          }
+        }
+      }
+    }
+    .details-view {
+      .back {
+        transform: scale(1);
+      }
+      .background {
+        transform: translate3d(0,-40px,0);
+        transition: transform 0.25s 0.05s;
+      }
+      li {
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            transform: translate3d(0,0,0);
+          } 
+        }
+      }
+    }
+  }
+  
+  .ranking-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:60%;
+    background: rgba(255,255,255,1);
+    z-index: 1;
+    transition: background 0.3s 0.1s;
+    margin-left:0px;
+    border-radius: 3px;
+    height: 350px;
+
+    ul {
+      li {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 70px;
+        transition: transform 0.3s, opacity 0.3s 0.3s, border-color 0.3s 0.3s;
+
+        .name {
+          -webkit-font-smoothing: antialiased;
+        }
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            transform: translate3d(0, ($i - 1) * 70px, 0);
+          }
+        }
+
+        &:hover {
+          background: #1dbbb5;
+          color:#fff;
+        }
+
+        .avatar {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-size: 100%;
+          margin: 10px 15px;
+          border: solid;
+          border-color: #6bbef2;
+        }
+      }
+    }
+  }
+
+  .details-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: #fff;
+    
+    .background {
+      position: absolute;
+      top: 0;
+      height: 260px;
+      width: 100%;
+      background: url('http://mooxidesign.com/wp-content/uploads/2014/06/5-Polygon-Backgrounds.jpg');
+      transition: transform 0.25s;
+    }
+    
+    .back {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      background: url('https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/back-alt-128.png');
+      background-size: 100%;
+      border: 0;
+      transform: scale(0.1);
+      transition: transform 0.15s;
+      z-index: 1;
+    }
+    ul {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 225px;
+    }
+    li {
+      i {
+        font-size: 1.2rem;
+        margin: 0 15px;
+      }
+      height: 70px;
+      line-height: 70px;
+      border-bottom: 1px solid #ddd;
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transform: translate3d(0, (($i * 5px) + 25px) , 0);
+	        transition: transform 0.3s (($i - 1) * 0.02s);
+        }
+      }
+    }
+  }
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    visibility: hidden;
+    width: 140px;
+    color: #979797;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0 0;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 102%;
+    font-size: x-small;
+    background: linear-gradient(180deg, #df5a5b 42%, #fff 0%);
+    height: 55px;
+    padding-left: 10px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.table{
+  width: 100%;
+  heigth:100%;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+.table-head{
+  color: #fff;
+  height: 27px;
+}
+.table-body{
+  font-size: large;
+  font-weight: bolder;
+  text-align: center;
+  font-family: 'Montserrat extra-bolder', sans-serif;
+}
+.user-info{
+  font-size: smaller;
+ font-weight: bolder;
+ position:absolute;
+}
+#user-description{
+ color:#cacaca;
+ margin-top: -13px;
+}
+.rank-position{
+  margin-top: -27px;
+  position: absolute;
+  margin-left: 47px;
+  color: #959595;
+  background: white;
+  border-radius: 100px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  border: solid;
+  border-top-width: medium;
+  border-right-width: medium;
+  border-bottom-width: medium;
+  border-left-width: medium;
+  font-size: small;
+  border-width: 1px;
+  font-weight: bolder;
+}
